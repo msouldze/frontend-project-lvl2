@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import program from '../src/index.js';
+import program from '../src/cli.js';
 
 console.log(program);
