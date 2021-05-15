@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import { Command } from 'commander';
+import program from '../src/index.js';
 
-const program = new Command();
+console.log(program);
