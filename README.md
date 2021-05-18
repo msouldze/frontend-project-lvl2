@@ -1,7 +1,7 @@
 # Difference Generator
 
 ### Hexlet tests and linter status:
-[![Actions Status](https://github.com/msouldze/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/msouldze/frontend-project-lvl2/actions) <a href="https://codeclimate.com/github/msouldze/frontend-project-lvl2"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability" /></a> [![Actions status](https://github.com/msouldze/frontend-project-lvl2/actions/workflows/node.js.yml/badge.svg)](https://github.com/msouldze/frontend-project-lvl2/actions)
+[![Actions Status](https://github.com/msouldze/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/msouldze/frontend-project-lvl2/actions) <a href="https://codeclimate.com/github/msouldze/frontend-project-lvl2"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability" /></a> <a href="https://codeclimate.com/github/msouldze/frontend-project-lvl2/test_coverage"><img src="https://api.codeclimate.com/v1/badges/9b1ef8a3cbc6ea250976/test_coverage" /></a> [![Actions status](https://github.com/msouldze/frontend-project-lvl2/actions/workflows/node.js.yml/badge.svg)](https://github.com/msouldze/frontend-project-lvl2/actions)
 
 ### Illustrations
 
