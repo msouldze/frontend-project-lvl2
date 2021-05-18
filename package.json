@@ -13,7 +13,8 @@
     "gendiff": "bin/gendiff.js"
   },
   "dependencies": {
-    "commander": "^7.2.0"
+    "commander": "^7.2.0",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "eslint": "^7.26.0",

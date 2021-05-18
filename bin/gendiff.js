@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import program from '../src/cli.js';
+import program from '../src/commander.js';
 
-console.log(program);
+program.parse();
