@@ -8,7 +8,12 @@ program
   .arguments('<filepath1> <filepath2>')
   .description('Compares two configuration files and shows a difference.')
   .option('-f, --format [type]', 'output format')
-  .action((filepath1, filepath2) => {
+  .action((filepath1, filepath2, options) => {
+    if (options.format) {
+      const format1 = filepath1.split('.')[1];
+      const format2 = filepath2.split('.')[1];
+      console.log(format1, format2);
+    }
     console.log(genDiff(filepath1, filepath2));
   });
 

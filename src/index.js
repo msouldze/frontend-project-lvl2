@@ -34,7 +34,6 @@ const genDiff = (filepath1, filepath2) => {
       return result;
     }, [])
     .join('\n');
-  console.log(_.union(f1, f2).sort());
   return `{\n${unitedData}\n}`;
 };
 
