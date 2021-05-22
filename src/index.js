@@ -1,40 +1,38 @@
 import _ from 'lodash';
+import path from 'path';
 import { readFileSync } from 'fs';
 
-const getFileData = (fileName) => {
-  const data = readFileSync(fileName, 'utf8');
+const readFileData = (filePath) => {
+  const data = readFileSync(path.resolve(process.cwd(), '__fixtures__', filePath), 'utf8');
   return JSON.parse(data);
 };
 
 const genDiff = (filepath1, filepath2) => {
-  const fileData1 = getFileData(filepath1);
-  const fileData2 = getFileData(filepath2);
-  const f1 = Object.entries(fileData1).map((str) => str.join(': '));
-  const f2 = Object.entries(fileData2).map((str) => str.join(': '));
-  const unitedData = _.union(f1, f2)
-    .sort()
-    .reduce((result, data) => {
-      const key = data.slice(0, data.indexOf(':'));
-      const value = data.slice(data.indexOf(':'));
+  const fileData1 = JSON.parse((readFileData(filepath1));
+  const fileData2 = JSON.parse((readFileData(filepath2));
+  const f1 = Object.entries(fileData1);
+  const f2 = Object.entries(fileData2);
+  const unitedData = _.sortBy(_.union(f1, f2))
+    .reduce((result, [key, value]) => {
       if (_.has(fileData1, key) && _.has(fileData2, key)) {
         if (fileData1[key] !== value) {
-          result.push(`+ ${data}`);
-        } else if (fileData2[data] !== value) {
-          result.push(`- ${data}`);
+          result.push(`  + ${key}: ${value}`);
+        } else if (fileData2[key] !== value) {
+          result.push(`  - ${key}: ${value}`);
         } else {
-          result.push(`  ${data}`);
+          result.push(`    ${key}: ${value}`);
         }
       }
       if (!_.has(fileData1, key) && _.has(fileData2, key)) {
-        result.push(`+ ${data}`);
+        result.push(`  + ${key}: ${value}`);
       }
       if (_.has(fileData1, key) && !_.has(fileData2, key)) {
-        result.push(`- ${data}`);
+        result.push(`  - ${key}: ${value}`);
       }
       return result;
-    }, [])
-    .join('\n');
-  return `{\n${unitedData}\n}`;
+    }, []);
+  const result = _.uniq(unitedData).join('\n');
+  return `{\n${result}\n};`;
 };
 
 export default genDiff;
