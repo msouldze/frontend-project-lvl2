@@ -8,8 +8,8 @@ const readFileData = (filePath) => {
 };
 
 const genDiff = (filepath1, filepath2) => {
-  const fileData1 = JSON.parse((readFileData(filepath1));
-  const fileData2 = JSON.parse((readFileData(filepath2));
+  const fileData1 = readFileData(filepath1);
+  const fileData2 = readFileData(filepath2);
   const f1 = Object.entries(fileData1);
   const f2 = Object.entries(fileData2);
   const unitedData = _.sortBy(_.union(f1, f2))
