@@ -32,7 +32,7 @@ const genDiff = (filepath1, filepath2) => {
       return result;
     }, []);
   const result = _.uniq(unitedData).join('\n');
-  return `{\n${result}\n};`;
+  return `{\n${result}\n}`;
 };
 
 export default genDiff;

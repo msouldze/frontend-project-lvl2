@@ -1,3 +1,4 @@
+import { test, expect } from '@jest/globals';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import fs from 'fs';
@@ -9,9 +10,8 @@ const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', 
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
 test('difference generator', () => {
-  const file1 = 'file1.json';
-  const file2 = 'file2.json';
+  const actual = genDiff('file1.json', 'file2.json');
   const expected = readFile('result.txt');
 
-  expect(genDiff(file1, file2)).toEqual(expected);
+  expect(actual).toEqual(expected);
 });
