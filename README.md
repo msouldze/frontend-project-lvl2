@@ -5,4 +5,4 @@
 
 ### Illustrations
 
-[![asciicast](https://asciinema.org/a/BuUkazLgGPV3FjKgZYeJZ7NZ6.svg)](https://asciinema.org/a/BuUkazLgGPV3FjKgZYeJZ7NZ6)
+[![asciicast](https://asciinema.org/a/hc9AWGH3iI0nKEiQ4YaNydS7u.svg)](https://asciinema.org/a/hc9AWGH3iI0nKEiQ4YaNydS7u)
