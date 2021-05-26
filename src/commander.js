@@ -1,3 +1,4 @@
+import path from 'path';
 import { Command } from 'commander';
 import genDiff from './index.js';
 
@@ -10,8 +11,8 @@ program
   .option('-f, --format [type]', 'output format')
   .action((filepath1, filepath2, options) => {
     if (options.format) {
-      const format1 = filepath1.split('.')[1];
-      const format2 = filepath2.split('.')[1];
+      const format1 = path.extname(filepath1);
+      const format2 = path.extname(filepath2);
       console.log(format1, format2);
     }
     console.log(genDiff(filepath1, filepath2));
