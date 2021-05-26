@@ -1,5 +1,4 @@
 ---
-key: value
-json: better for data interchange
-yaml: better for configuration
-boolean: true
+timeout: 20
+verbose: true
+host: hexlet.io
