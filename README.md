@@ -12,8 +12,4 @@
 [![asciicast](https://asciinema.org/a/90un7vfA7BDCUwX4fmZpLWRKQ.svg)](https://asciinema.org/a/90un7vfA7BDCUwX4fmZpLWRKQ)
 
 ### Complex objects 
-### JSON-format
-[![asciicast](https://asciinema.org/a/hc9AWGH3iI0nKEiQ4YaNydS7u.svg)](https://asciinema.org/a/hc9AWGH3iI0nKEiQ4YaNydS7u)
-
-### YAML-format
-[![asciicast](https://asciinema.org/a/90un7vfA7BDCUwX4fmZpLWRKQ.svg)](https://asciinema.org/a/90un7vfA7BDCUwX4fmZpLWRKQ)
+[![asciicast](https://asciinema.org/a/MHoljjAbYA7IlrZ41fCqSUfhT.svg)](https://asciinema.org/a/MHoljjAbYA7IlrZ41fCqSUfhT)
