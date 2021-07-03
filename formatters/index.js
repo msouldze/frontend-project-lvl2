@@ -1,8 +1,8 @@
 import _ from 'lodash';
 import path from 'path';
 import { readFileSync } from 'fs';
-import parseFile from './parsers.js';
-import stylish from '../formatters/stylish.js';
+import parseFile from '../src/parsers.js';
+import stylish from './stylish.js';
 
 const getFilePath = (filename) => path.resolve(process.cwd(), '__fixtures__', filename);
 const getFileData = (filename) => readFileSync(getFilePath(filename), 'utf8');

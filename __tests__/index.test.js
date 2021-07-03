@@ -2,7 +2,7 @@ import { test, expect } from '@jest/globals';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import fs from 'fs';
-import genDiff from '../src/index.js';
+import genDiff from '../formatters/index.js';
 import plain from '../formatters/plain.js';
 import json from '../formatters/json.js';
 
