@@ -2,4 +2,7 @@
 
 import program from '../src/commander.js';
 
-program.parse();
+const gendiff = program.parse();
+gendiff();
+
+export default gendiff;
