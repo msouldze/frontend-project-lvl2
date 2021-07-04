@@ -1,5 +1,5 @@
 import { Command } from 'commander';
-import genDiff from './index.js';
+import genDiff from '../formatters/index.js';
 import stylish from '../formatters/stylish.js';
 import plain from '../formatters/plain.js';
 import json from '../formatters/json.js';
