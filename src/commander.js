@@ -20,8 +20,6 @@ program
       console.log(plainDiff);
     } else if (options.format === 'json') {
       console.log(jsonDiff);
-    } else if (options.format === true) {
-      console.log(stylishDiff);
     } else {
       console.log(fileDiff);
     }
