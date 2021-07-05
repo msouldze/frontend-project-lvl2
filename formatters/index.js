@@ -50,6 +50,7 @@ const genDiff = (filename1, filename2, formatName = stylish) => {
       });
     return result;
   };
+  console.log(iter(fileData1, fileData2));
   return formatName(iter(fileData1, fileData2));
 };
 
