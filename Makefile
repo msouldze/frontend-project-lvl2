@@ -3,7 +3,7 @@ install:
 gendiff:
 	node bin/gendiff.js
 test:
-	npx -n --experimental-vm-modules jest
+	npx -n jest
 test-coverage:
 	npm test -- --coverage --coverageProvider=v8
 lint:
