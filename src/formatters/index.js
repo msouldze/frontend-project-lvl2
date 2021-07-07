@@ -2,13 +2,15 @@ import _ from 'lodash';
 import path from 'path';
 import { readFileSync } from 'fs';
 import parseFile from '../parsers.js';
+import stylish from './stylish.js';
 
 const getFilePath = (filename) => path.resolve(process.cwd(), '__fixtures__', filename);
 const getFileData = (filename) => readFileSync(getFilePath(filename), 'utf8');
 
-const genDiff = (filename1, filename2) => {
+const genDiff = (filename1, filename2, formatName = stylish) => {
   const fileData1 = parseFile(filename1, getFileData(filename1));
   const fileData2 = parseFile(filename2, getFileData(filename2));
+
   const iter = (data1, data2) => {
     if (!_.isObject(data1) || !_.isObject(data2)) {
       return data1 !== undefined ? String(data1) : String(data2);
@@ -49,7 +51,8 @@ const genDiff = (filename1, filename2) => {
       });
     return result;
   };
-  return iter(fileData1, fileData2);
+  const diff = iter(fileData1, fileData2);
+  return formatName(diff);
 };
 
 export default genDiff;
