@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-import formatter from '../src/formatters/formatter.js';
+import formatter from '../src/formatters/index.js';
 import stylish from '../src/formatters/stylish.js';
 import plain from '../src/formatters/plain.js';
 import json from '../src/formatters/json.js';
@@ -14,15 +14,12 @@ program
   .description('Compares two configuration files and shows a difference.')
   .option('-f, --format [type]', 'output format', stylish)
   .action((filepath1, filepath2, options) => {
-    const fileDiff = formatter(filepath1, filepath2);
-    const plainDiff = formatter(filepath1, filepath2, plain);
-    const jsonDiff = formatter(filepath1, filepath2, json);
     if (options.format === 'plain') {
-      console.log(plainDiff);
+      console.log(formatter(filepath1, filepath2, plain));
     } else if (options.format === 'json') {
-      console.log(jsonDiff);
+      console.log(formatter(filepath1, filepath2, json));
     } else {
-      console.log(fileDiff);
+      console.log(formatter(filepath1, filepath2));
     }
   });
 
