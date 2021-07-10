@@ -8,10 +8,7 @@ const isObject = (value) => {
 };
 
 const plain = (data) => {
-  const iter = (tree, depth = '') => {
-    if (!Array.isArray(tree)) {
-      return tree;
-    }
+  const iter = (tree, depth = '') => { 
     const lines = tree
       .flatMap(([diff, key, val], index, array) => {
         if (diff === '+') {
@@ -24,6 +21,8 @@ const plain = (data) => {
             return `Property '${depth}${key}' was updated. From ${isObject(val)} to ${isObject(val2)}`;
           }
           return `Property '${depth}${key}' was removed`;
+        } if (diff === undefined) {
+          return [];
         }
         return (typeof val === 'object') ? iter(val, `${depth}${key}.`) : [];
       });
