@@ -18,12 +18,12 @@ const plain = (data) => {
           return `Property '${depth}${key}' was added with value: ${isObject(val)}`;
         }
         if (diff === '-') {
-          const [, key2, val2] = array[index + 1];
-          if (key === key2) {
-            array.splice(array[index + 1], 1);
-            return `Property '${depth}${key}' was updated. From ${isObject(val)} to ${isObject(val2)}`;
+          if (array[index + 1] === undefined || !array[index + 1].includes(key)) {
+            return `Property '${depth}${key}' was removed`;
           }
-          return `Property '${depth}${key}' was removed`;
+          const [,, val2] = array[index + 1];
+          array.splice(array[index + 1], 1);
+          return `Property '${depth}${key}' was updated. From ${isObject(val)} to ${isObject(val2)}`;
         }
         return (typeof val === 'object') ? iter(val, `${depth}${key}.`) : [];
       });
