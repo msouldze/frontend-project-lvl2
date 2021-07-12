@@ -20,7 +20,7 @@ test.each([
 
 test.each([
   { actualYaml: formatter('file1.yml', 'file2.yaml'), expected: readFile('resultStylish.txt') },
-  { actualJson: formatter('file1.yml', 'file2.yaml', 'stylish'), expected: readFile('resultStylish.txt') },
+  { actualYaml: formatter('file1.yml', 'file2.yaml', 'stylish'), expected: readFile('resultStylish.txt') },
   { actualYaml: formatter('file1.yml', 'file2.yaml', 'plain'), expected: readFile('resultPlain.txt') },
   { actualYaml: formatter('file1.yml', 'file2.yaml', 'json'), expected: readFile('resultJson.txt') },
 ])('yaml', ({ actualYaml, expected }) => {
