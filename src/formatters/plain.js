@@ -14,7 +14,7 @@ const plain = (data) => {
     }
     const lines = tree
       .flatMap(([diff, key, val], index, array) => {
-        console.log(array);
+        // console.log(array);
         if (diff === '+') {
           return `Property '${depth}${key}' was added with value: ${isObject(val)}`;
         }
