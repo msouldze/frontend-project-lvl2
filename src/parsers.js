@@ -11,10 +11,7 @@ const parseFile = (filename, data) => {
     parse = JSON.parse;
   } else if (format === '.yml' || format === '.yaml') {
     parse = yaml.load;
-  } else if (format === '.ini') {
-    parse = ini.parse;
   }
-
   return parse(data);
 };
 
