@@ -1,4 +1,3 @@
-import ini from 'ini';
 import yaml from 'js-yaml';
 import path from 'path';
 
