@@ -5,13 +5,8 @@ const parseFile = (filename, data) => {
   const format = path.extname(filename);
 
   // Выбирается функция-парсер в зависимости от расширения файла
-  let parse;
-  if (format === '.json') {
-    parse = JSON.parse;
-  } else if (format === '.yml' || format === '.yaml') {
-    parse = yaml.load;
-  }
-  return parse(data);
+  const parse = (format === '.yml' || format === '.yaml') ? yaml.load(data) : JSON.parse(data);
+  return parse;
 };
 
 export default parseFile;
