@@ -1,7 +1,22 @@
+import _ from 'lodash';
+
+const isBoolean = (value) => {
+  if (value === 'true' || value === 'false') {
+    return true;
+  }
+  return false;
+};
+const isNull = (value) => value === 'null';
+
+const isNumber = (value) => {
+  const num = parseFloat(value);
+  return _.isNumber(num) && !_.isNaN(num);
+};
+
 const isObject = (value) => {
   if (typeof value === 'object') {
     return '[complex value]';
-  } if (value === 'false' || value === 'true' || value === 'null') {
+  } if (isBoolean(value) || isNull(value) || isNumber(parseFloat(value))) {
     return value;
   }
   return `'${value}'`;
