@@ -8,12 +8,12 @@ const json = (data) => {
         return `{"name":"${key}","value":"${value}","status":"added"}`;
       }
       if (diff === '-') {
-        const [, key2, val2] = array[index + 1];
-        if (key === key2) {
-          array[index + 1].splice(0, array.length);
-          return `{"name":"${key}","value":"${value}","status":"updated","oldValue":"${val2}"}`;
+        if (array[index + 1] === undefined || !array[index + 1].includes(key)) {
+          return `{"name":"${key}","value":"${value}","status":"removed"}`;
         }
-        return `{"name":"${key}","value":"${value}","status":"removed"}`;
+        const [,, val2] = array[index + 1];
+        array.splice(array[index + 1], 1);
+        return `{"name":"${key}","value":"${value}","status":"updated","oldValue":"${val2}"}`;
       }
       return diff === ' ' ? `{"name":"${key}","value":"${value}","status":"outdated"}` : [];
     }
