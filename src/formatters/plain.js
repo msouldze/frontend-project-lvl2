@@ -16,7 +16,7 @@ const isNumber = (value) => {
 const isObject = (value) => {
   if (typeof value === 'object') {
     return '[complex value]';
-  } if (isBoolean(value) || isNull(value) || isNumber(parseFloat(value))) {
+  } if (isBoolean(value) || isNull(value) || isNumber(value)) {
     return value;
   }
   return `'${value}'`;
@@ -27,24 +27,28 @@ const plain = (data) => {
     if (!Array.isArray(tree)) {
       return tree;
     }
-    const lines = tree
-      .flatMap(([diff, key, val], index, array) => {
-        if (diff === '+') {
-          return `Property '${depth}${key}' was added with value: ${isObject(val)}`;
+    const lines = tree.reduce((arr, [diff, key, val], index, array) => {
+      if (diff === '+') {
+        if (array[index - 1] === undefined || !array[index - 1].includes(key)) {
+          arr.push(`Property '${depth}${key}' was added with value: ${isObject(val)}`);
         }
-        if (diff === '-') {
-          if (array[index + 1] === undefined || !array[index + 1].includes(key)) {
-            return `Property '${depth}${key}' was removed`;
-          }
+      }
+      if (diff === '-') {
+        if (array[index + 1] !== undefined && array[index + 1].includes(key)) {
           const [,, val2] = array[index + 1];
-          array.splice(array[index + 1], 1);
-          return `Property '${depth}${key}' was updated. From ${isObject(val)} to ${isObject(val2)}`;
+          arr.push(`Property '${depth}${key}' was updated. From ${isObject(val)} to ${isObject(val2)}`);
+        } else {
+          arr.push(`Property '${depth}${key}' was removed`);
         }
-        return (typeof val === 'object') ? iter(val, `${depth}${key}.`) : [];
-      });
-    return lines.join('\n');
+      }
+      if (typeof val === 'object') {
+        arr.push(iter(val, `${depth}${key}.`));
+      }
+      return arr;
+    }, []);
+    return lines.flat();
   };
-  return iter(data);
+  return iter(data).join('\n');
 };
 
 export default plain;
