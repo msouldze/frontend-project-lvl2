@@ -34,20 +34,24 @@ const genDiff = (filename1, filename2) => {
         }
         return (!_.has(data1, key) && _.has(data2, key)) ? ['+', `${key}`, iter(data2[key], data2[key])] : ['-', `${key}`, iter(data1[key], data1[key])];
       });
-    const result = _.uniqWith(unitedData, _.isEqual)
-      .sort((a, b) => {
-        if (a[1] === b[1]) {
-          if (a[0] < b[0]) {
-            return 1;
-          }
-          if (a[0] > b[0]) {
-            return -1;
-          }
-          return 0;
+    const result = _.uniqWith(unitedData, _.isEqual);
+    const sorted = result.sort((a, b) => {
+      if (a[1] === b[1]) {
+        if (a[0] < b[0]) {
+          return 1;
         }
-        return 1;
-      });
-    return result;
+        if (a[0] > b[0]) {
+          return -1;
+        }
+        return 0;
+      }
+      return 1;
+    });
+    // _.orderBy(result, [(item) => {
+    //   const [diff, key] = item;
+    //   return [key, diff];
+    // }], ['asc', 'desc']);
+    return sorted;
   };
   return iter(fileData1, fileData2);
 };
