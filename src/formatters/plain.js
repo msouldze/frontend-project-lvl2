@@ -43,9 +43,9 @@ const plain = (data) => {
         }
         return (typeof val === 'object') ? iter(val, `${depth}${key}.`) : [];
       });
-    return lines.join('\n');
+    return lines;
   };
-  return iter(data);
+  return iter(data).join('\n');
 };
 
 export default plain;
