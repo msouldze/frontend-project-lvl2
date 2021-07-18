@@ -19,7 +19,7 @@ const genDiff = (filename1, filename2) => {
 
     const dataEntries1 = Object.entries(data1);
     const dataEntries2 = Object.entries(data2);
-    const unitedData = _.sortBy(_.unionWith(dataEntries1, dataEntries2, _.isEqual))
+    const unitedData = _.unionWith(dataEntries1, dataEntries2, _.isEqual)
       .map(([key, value]) => {
         if (_.has(data1, key) && _.has(data2, key)) {
           if ((_.isObject(data1[key]) && _.isObject(data2[key])) || data1[key] === data2[key]) {
@@ -35,22 +35,23 @@ const genDiff = (filename1, filename2) => {
         return (!_.has(data1, key) && _.has(data2, key)) ? ['+', `${key}`, iter(data2[key], data2[key])] : ['-', `${key}`, iter(data1[key], data1[key])];
       });
     const result = _.uniqWith(unitedData, _.isEqual);
-    const sorted = result.sort((a, b) => {
-      if (a[1] === b[1]) {
-        if (a[0] < b[0]) {
-          return 1;
-        }
-        if (a[0] > b[0]) {
-          return -1;
-        }
-        return 0;
-      }
-      return 1;
+    const sorted = _.sortBy(result, (item) => {
+      const [diff, key] = item;
+      return [key, -diff];
     });
-    // _.orderBy(result, [(item) => {
-    //   const [diff, key] = item;
-    //   return [key, diff];
-    // }], ['asc', 'desc']);
+
+    // .sort((a, b) => {
+    //   if (a[1] === b[1]) {
+    //     if (a[0] < b[0]) {
+    //       return 1;
+    //     }
+    //     if (a[0] > b[0]) {
+    //       return -1;
+    //     }
+    //     return 0;
+    //   }
+    //   return 1;
+    // });
     return sorted;
   };
   return iter(fileData1, fileData2);
