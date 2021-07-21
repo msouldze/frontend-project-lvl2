@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Difference Generator",
-  "main": "src/formatters/index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "npx jest --bail"
   },
@@ -19,7 +19,6 @@
   },
   "dependencies": {
     "commander": "^7.2.0",
-    "ini": "^2.0.0",
     "js-yaml": "^4.1.0",
     "lodash": "^4.17.21"
   },
