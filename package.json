@@ -5,7 +5,7 @@
   "description": "Difference Generator",
   "main": "src/index.js",
   "scripts": {
-    "test": "npx jest --bail"
+    "test": "npx jest"
   },
   "author": "Aizhan Dzhumanalieva",
   "license": "ISC",
